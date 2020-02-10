@@ -1,0 +1,622 @@
+/* VARIABLES */
+
+$red-border: #ee2819;
+$red-background: #ff3c2d;
+$red-shadow: #ff4444;
+  
+$blue-border: #139eff;
+$blue-background: #66d2ff;
+$blue-shadow: #0078ff;
+  
+$white-border: rgba(255,255,255,0.2);
+$white-background: rgba(255,255,240,0.85);
+$white-shadow: rgba(255,255,240,0.85);
+  
+$yellow-border: #ffba13;
+$yellow-background: #ffd368;
+$yellow-shadow: rgba(255,168,0,0.8);
+
+$default-time: 800ms;
+$traffic-time: 2000ms;
+
+$bulb-gradient: linear-gradient(155deg, rgba(255,255,255,0.24) 0%,rgba(255,255,255,0.14) 25%,rgba(255,255,255,0.18) 49%,rgba(0,0,0,0) 78%,rgba(0,0,0,0.8) 100%);
+$bulb-dim-shadow: 0px 0px 3px  #222;
+$bulb-lit-shadow: 0px 0px 10px 4px #fff;
+$bulb-lit-warn-shadow: 0px 0px 8px 4px #fff7d1;
+  
+
+/* MIXINS */
+
+@mixin lightoff{
+  background-color: #222;     
+  box-shadow: 0px 0px 0px 0px #000;
+  border: 1px solid #111;
+  opacity: 0;
+}
+
+@mixin lighton($border-color, $background-color, $shadow-color){
+  border: 1px solid $border-color;
+  background-color: $background-color;  
+  box-shadow: 0px 0px 100px 25px $shadow-color;  
+  opacity: 1;
+}
+
+/* BASICS */
+
+body{
+  background-color: black;
+  min-width: 980px;
+  padding: 10px 10px 250px;
+}
+
+h1{
+  font-family: 'Rubik', sans-serif;
+  font-weight: 900;
+  font-style: italic;
+  color: #333;
+  margin: 40px 0 80px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 3rem;
+  text-align: center;
+}
+
+/* LIGHT BAR ESSENTIALS */
+
+.lightbar{
+  position: relative;
+  padding: 4px 10px;
+  margin: 0 auto;
+  max-width: 945px;
+  border-radius: 3px;
+  &:after{
+    top: 0;
+    left:0;
+    position: absolute;
+    z-index: 10000;
+    display: block;
+    content:"";
+    width: 100%;
+    height: 100%;
+    border-radius: 3px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.24) 0%,rgba(255,255,255,0.24) 1%,rgba(255,255,255,0.14) 43%,rgba(255,255,255,0) 58%,rgba(255,255,255,0) 100%);
+  }
+}
+
+.light{
+  position: relative;
+  width: 131px;
+  height: 34px;
+  padding: 5px 10px 4px;
+  background-color: #222;
+  border-top: 2px solid #111;
+  border-right: 1px solid #333;
+  border-bottom: 1px solid #333;
+  border-left: 2px solid #111;
+  border-radius: 6px;
+  animation-duration: $default-time;
+  animation-name: light;
+  animation-iteration-count: infinite;
+  display: inline-block;
+}
+
+.inner-light{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  top: -1px;
+  left: -1px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  opacity: 0;
+}
+
+#light-1 .inner-light,
+#light-6 .inner-light{
+  z-index: 777;
+}
+
+#light-2 .inner-light,
+#light-5 .inner-light{
+  z-index: 888;
+}
+
+#light-3 .inner-light,
+#light-4 .inner-light{
+  z-index: 999;
+}
+
+.bulb{
+  display: inline-block;
+  position: relative;
+  box-shadow: 0px 0px 3px  #222;
+  border-radius: 50%;
+  margin: 1px 0px 0;
+  width: 11px;
+  height: 11px;
+  z-index: 999;
+  background: $bulb-gradient;
+}
+
+/* USER CONTROLS */
+
+.controls{
+  margin: 100px auto 0;
+  max-width: 945px;
+  h2{
+    text-align: center;
+    font-family: 'Rubik', sans-serif;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 1.2rem;
+  }
+  .default-buttons, .traffic-buttons{
+    width: 46%;
+    float: left;
+    border-top: 2px solid #222;
+  }
+  .traffic-buttons{
+    float: right;
+  }
+  button{
+    outline: none;
+    border: 2px solid #444;
+    background-color: #555;
+    border-radius: 3px;
+    color: #000;
+    max-width: 210px;
+    padding: 0.65rem;
+    font-size: 1rem;
+    font-family: 'Rubik', sans-serif;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    width: 100%;
+    margin: 5px 2px;
+    &.active{
+      background-color: #ddd;
+    }
+  }
+}
+
+
+/* SPOTLIGHT */
+
+.spotlight .bulb{
+  background: #fff; 
+  box-shadow: 0px 0px 45px 10px #fff;
+}
+.spotlight .inner-light{
+  border: 1px solid $white-border;
+  background-color: $white-background;  
+  box-shadow: 0px 0px 100px 25px $white-shadow;
+  opacity: 1;
+  z-index: 9999;
+}
+
+
+/* ANIMATION BASICS */
+.delay .bulb{
+  animation-delay: $default-time / 2;
+}
+
+.delay .inner-light{
+  animation-delay: $default-time / 2;
+}
+
+.strobe .bulb{
+  animation-duration: $default-time;
+  animation-name: bulb-strobe;
+  animation-iteration-count: infinite;
+}
+
+@keyframes bulb-strobe {
+  0%, 25%    { 
+    background: $bulb-gradient;  box-shadow: $bulb-dim-shadow
+  }
+  28%, 50%   { 
+    background: white; box-shadow: $bulb-lit-shadow 
+  }
+  52%, 55%   { 
+    background: $bulb-gradient; box-shadow: $bulb-dim-shadow
+  }
+  57%, 69%   { 
+    background: white; box-shadow: $bulb-lit-shadow  
+  }
+  70%, 71%   { 
+    background: $bulb-gradient; box-shadow: $bulb-dim-shadow
+  }
+  72%, 75%   { 
+    background: white; box-shadow: $bulb-lit-shadow 
+  }
+  77%, 100%  { 
+    background: $bulb-gradient; box-shadow: $bulb-dim-shadow
+  }
+}
+
+/* RED/BLUE LIGHTS */
+
+.strobe.blue .inner-light{
+  animation-duration: $default-time;
+  animation-name: strobe-blue;
+  animation-iteration-count: infinite;
+}
+
+.strobe.red .inner-light{
+  animation-duration: $default-time;
+  animation-name: strobe-red;
+  animation-iteration-count: infinite;
+}
+
+@keyframes strobe-blue {
+  0%, 25%    { 
+    @include lightoff;
+  }
+  28%, 50%   { 
+    @include lighton($blue-border,$blue-background,$blue-shadow);
+  }
+  52%, 55%   { 
+    @include lightoff;
+  }
+  57%, 69%   { 
+    @include lighton($blue-border,$blue-background,$blue-shadow);
+  }
+  70%, 71%   { 
+    @include lightoff;
+  }
+  72%, 75%   { 
+    @include lighton($blue-border,$blue-background,$blue-shadow);
+  }
+  77%, 100%  { 
+    @include lightoff;
+  }
+}
+
+@keyframes strobe-red {
+  0%, 25%    { 
+    @include lightoff;
+  }
+  28%, 50%   {
+    @include lighton($red-border,$red-background,$red-shadow);
+  }
+  52%, 55%   { 
+    @include lightoff;
+  }
+  57%, 69%   { 
+    @include lighton($red-border,$red-background,$red-shadow);
+  }
+  70%, 71%   { 
+    @include lightoff;
+  }
+  72%, 75%   { 
+    @include lighton($red-border,$red-background,$red-shadow);
+  }
+  77%, 100%  { 
+    @include lightoff;
+  }
+}
+
+
+/* TRAFFIC "CAUTION" SETTINGS */
+
+.caution .inner-light,
+.caution .bulb{
+  animation-duration: $traffic-time;
+  animation-iteration-count: infinite;
+}
+
+#light-3.caution .bulb,
+#light-4.caution .bulb{
+  animation-name: bulb-caution-1;
+}
+
+#light-2.caution .bulb,
+#light-5.caution .bulb{
+  animation-name: bulb-caution-2;
+}
+
+#light-1.caution .bulb,
+#light-6.caution .bulb{
+  animation-name: bulb-caution-3;
+}
+
+@keyframes bulb-caution-1 {
+  0%, 16%    { 
+    background: $bulb-gradient;  box-shadow: $bulb-dim-shadow
+  }
+  17%, 97%   { 
+    background: #fff7d4; box-shadow: $bulb-lit-warn-shadow 
+  }
+  99%, 100%    { 
+    background: $bulb-gradient;  box-shadow: $bulb-dim-shadow
+  }
+}
+
+@keyframes bulb-caution-2 {
+  0%, 36%    { 
+    background: $bulb-gradient;  box-shadow: $bulb-dim-shadow
+  }
+  37%, 97%   { 
+    background: #fff7d4; box-shadow: $bulb-lit-warn-shadow 
+  }
+  99%, 100%    { 
+    background: $bulb-gradient;  box-shadow: $bulb-dim-shadow
+  }
+}
+
+@keyframes bulb-caution-3 {
+  0%, 56%    { 
+    background: $bulb-gradient;  box-shadow: $bulb-dim-shadow
+  }
+  57%, 97%   { 
+    background: #fff7d4; box-shadow: $bulb-lit-warn-shadow 
+  }
+  99%, 100%    { 
+    background: $bulb-gradient;  box-shadow: $bulb-dim-shadow
+  }
+}
+
+#light-4.caution .inner-light,
+#light-3.caution .inner-light{
+  animation-name: caution-1;
+}
+
+#light-5.caution .inner-light,
+#light-2.caution .inner-light{
+  animation-name: caution-2;
+}
+
+#light-1.caution .inner-light,
+#light-6.caution .inner-light{
+  animation-name: caution-3;
+}
+
+@keyframes caution-1 {
+  0%, 16%    { 
+    @include lightoff;
+  }
+  17%, 97%   { 
+    @include lighton($yellow-border,$yellow-background,$yellow-shadow);
+  }
+  99%, 100%    { 
+    @include lightoff;
+  }
+}
+
+@keyframes caution-2 {
+  0%, 36%    { 
+    @include lightoff;
+  }
+  37%, 97%   { 
+    @include lighton($yellow-border,$yellow-background,$yellow-shadow);
+  }
+  99%, 100%    { 
+    @include lightoff;
+  }
+}
+
+@keyframes caution-3 {
+  0%, 56%    { 
+    @include lightoff;
+  }
+  57%, 97%   { 
+    @include lighton($yellow-border,$yellow-background,$yellow-shadow);
+  }
+  99%, 100%    { 
+    @include lightoff;
+  }
+}
+
+/* TRAFFIC "LEFT/RIGHT" SETTINGS */
+
+.warn .inner-light,
+.warn .bulb{
+  animation-duration: $traffic-time;
+  animation-iteration-count: infinite;
+}
+
+#light-2.warn.on .bulb,
+#light-3.warn.on .bulb,
+#light-4.warn.on .bulb,
+#light-5.warn.on .bulb,
+#light-6.warn.right .bulb,
+#light-1.warn.left .bulb{
+  background: #fff7d4; 
+  box-shadow: $bulb-lit-warn-shadow;
+}
+
+#light-5.warn.right .bulb,
+#light-2.warn.left .bulb{
+  animation-name: bulb-warn-2;
+}
+
+#light-4.warn.right .bulb,
+#light-3.warn.left .bulb{
+  animation-name: bulb-warn-3;
+}
+
+#light-3.warn.right .bulb,
+#light-4.warn.left .bulb{
+  animation-name: bulb-warn-4;
+}
+
+#light-2.warn.right .bulb,
+#light-5.warn.left .bulb{
+  animation-name: bulb-warn-5;
+}
+
+#light-1.warn.right .bulb,
+#light-6.warn.left .bulb{
+  animation-name: bulb-warn-6;
+}
+
+@keyframes bulb-warn-1 {
+  0%, 100%   { 
+    background: #fff7d4; box-shadow: $bulb-lit-warn-shadow 
+  }
+}
+
+@keyframes bulb-warn-2 {
+  0%, 16%    { 
+    background: $bulb-gradient;  box-shadow: $bulb-dim-shadow
+  }
+  17%, 97%   { 
+    background: #fff7d4; box-shadow: $bulb-lit-warn-shadow 
+  }
+  99%, 100%    { 
+    background: $bulb-gradient;  box-shadow: $bulb-dim-shadow
+  }
+}
+
+@keyframes bulb-warn-3 {
+  0%, 30%    { 
+    background: $bulb-gradient;  box-shadow: $bulb-dim-shadow
+  }
+  31%, 97%   { 
+    background: #fff7d4; box-shadow: $bulb-lit-warn-shadow 
+  }
+  99%, 100%    { 
+    background: $bulb-gradient;  box-shadow: $bulb-dim-shadow
+  }
+}
+
+@keyframes bulb-warn-4 {
+  0%, 46%    { 
+    background: $bulb-gradient;  box-shadow: $bulb-dim-shadow
+  }
+  47%, 97%   { 
+    background: #fff7d4; box-shadow: $bulb-lit-warn-shadow 
+  }
+  99%, 100%    { 
+    background: $bulb-gradient;  box-shadow: $bulb-dim-shadow
+  }
+}
+
+@keyframes bulb-warn-5 {
+  0%, 58%    { 
+    background: $bulb-gradient;  box-shadow: $bulb-dim-shadow
+  }
+  59%, 97%   { 
+    background: #fff7d4; box-shadow: $bulb-lit-warn-shadow 
+  }
+  99%, 100%    { 
+    background: $bulb-gradient;  box-shadow: $bulb-dim-shadow
+  }
+}
+
+@keyframes bulb-warn-6 {
+  0%, 72%    { 
+    background: $bulb-gradient;  box-shadow: $bulb-dim-shadow
+  }
+  73%, 97%   { 
+    background: #fff7d4; box-shadow: $bulb-lit-warn-shadow 
+  }
+  99%, 100%    { 
+    background: $bulb-gradient;  box-shadow: $bulb-dim-shadow
+  }
+}
+
+#light-2.warn.on .inner-light,
+#light-3.warn.on .inner-light,
+#light-4.warn.on .inner-light,
+#light-5.warn.on .inner-light,
+#light-6.warn.right .inner-light,
+#light-1.warn.left .inner-light{
+  @include lighton($yellow-border,$yellow-background,$yellow-shadow);
+}
+
+#light-5.warn.right .inner-light,
+#light-2.warn.left .inner-light{
+  animation-name: warn-2;
+}
+
+#light-4.warn.right .inner-light,
+#light-3.warn.left .inner-light{
+  animation-name: warn-3;
+}
+
+#light-3.warn.right .inner-light,
+#light-4.warn.left .inner-light{
+  animation-name: warn-4;
+}
+
+#light-2.warn.right .inner-light,
+#light-5.warn.left .inner-light{
+  animation-name: warn-5;
+}
+
+#light-1.warn.right .inner-light,
+#light-6.warn.left .inner-light{
+  animation-name: warn-6;
+}
+
+@keyframes warn-1 {
+  0%, 98%   { 
+    @include lighton($yellow-border,$yellow-background,$yellow-shadow);
+  }
+  99%, 100%  { 
+    @include lightoff;
+  }
+}
+
+@keyframes warn-2 {
+  0%, 16%    { 
+    @include lightoff;
+  }
+  17%, 97%   { 
+    @include lighton($yellow-border,$yellow-background,$yellow-shadow);
+  }
+  99%, 100%    { 
+    @include lightoff;
+  }
+}
+
+@keyframes warn-3 {
+  0%, 30%    { 
+    @include lightoff;
+  }
+  31%, 97%   { 
+    @include lighton($yellow-border,$yellow-background,$yellow-shadow);
+  }
+  99%, 100%    { 
+    @include lightoff;
+  }
+}
+
+@keyframes warn-4 {
+  0%, 46%    { 
+    @include lightoff;
+  }
+  47%, 97%   { 
+    @include lighton($yellow-border,$yellow-background,$yellow-shadow);
+  }
+  99%, 100%    { 
+    @include lightoff;
+  }
+}
+
+@keyframes warn-5 {
+  0%, 58%    { 
+    @include lightoff;
+  }
+  59%, 97%   { 
+    @include lighton($yellow-border,$yellow-background,$yellow-shadow);
+  }
+  99%, 100%    { 
+    @include lightoff;
+  }
+}
+
+@keyframes warn-6 {
+  0%, 72%    { 
+    @include lightoff;
+  }
+  73%, 97%   { 
+    @include lighton($yellow-border,$yellow-background,$yellow-shadow);
+  }
+  99%, 100%    { 
+    @include lightoff;
+  }
+}
+

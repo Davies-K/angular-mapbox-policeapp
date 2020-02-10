@@ -1,0 +1,23 @@
+#map{ height: 90vh; }
+
+.row-map{
+  background-color: rgba(255,255,255,0.94);
+  padding: 10px 32px;
+  min-height: 640px;
+}
+
+.heading{
+  font-family: 'Fjalla One', sans-serif;
+  font-size: 16px;
+}
+
+.data-heading{
+  font-family: 'Fjalla One', sans-serif;
+  font-size:16px;
+  color: #333;
+}
+
+.data-entry{
+  padding: 8px 0px 2px 16px;
+  font-size: 16px;
+}

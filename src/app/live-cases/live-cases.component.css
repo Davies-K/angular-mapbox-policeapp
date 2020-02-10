@@ -1,0 +1,149 @@
+#map{ height: 90vh; }
+
+.row-map{
+  background-color: rgba(255,255,255,0.94);
+  padding: 10px 32px;
+  min-height: 640px;
+}
+
+.heading{
+  font-family: 'Fjalla One', sans-serif;
+  font-size: 16px;
+}
+
+.data-heading{
+  font-family: 'Fjalla One', sans-serif;
+  font-size:16px;
+  color: #333;
+}
+
+.data-entry{
+  padding: 8px 0px 2px 16px;
+  font-size: 16px;
+}
+
+.heading0 {
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+
+.marker {
+  border: none;
+  cursor: pointer;
+  height: 35px;
+  width: 35px;
+  background-image: url(https://img.icons8.com/color/48/000000/high-priority.png);
+  
+  background-color: rgba(0, 0, 0, 0);
+  background-size : contain;
+  background-repeat: no-repeat;
+}
+
+.mapboxgl-popup {
+  padding-bottom: 50px;
+}
+
+.mapboxgl-popup-close-button {
+  display: none;
+}
+
+.mapboxgl-popup-content {
+  font: 400 15px/22px 'Source Sans Pro', 'Helvetica Neue', Sans-serif;
+  padding: 0;
+  width: 180px;
+}
+
+.mapboxgl-popup-content-wrapper {
+  padding: 1%;
+}
+
+.mapboxgl-popup-content h3 {
+  /* background: #91c949; */
+  background: red;
+  color: #fff;
+  margin: 0;
+  display: block;
+  padding: 10px;
+  border-radius: 3px 3px 0 0;
+  font-weight: 700;
+  margin-top: -15px;
+}
+
+.mapboxgl-popup-content p {
+  margin: 0;
+  display: block;
+  padding: 10px;
+  font-weight: 200;
+}
+
+.mapboxgl-popup-content div {
+  padding: 10px;
+}
+
+.mapboxgl-container .leaflet-marker-icon {
+  cursor: pointer;
+}
+
+.mapboxgl-popup-anchor-top > .mapboxgl-popup-content {
+  margin-top: 15px;
+}
+
+.mapboxgl-popup-anchor-top > .mapboxgl-popup-tip {
+  border-bottom-color: #91c949;
+}
+
+.mapboxgl-ctrl-geocoder {
+  border: 0;
+  border-radius: 0;
+  position: relative;
+  top: 0;
+  width: 800px;
+  margin-top: 0;
+}
+
+.mapboxgl-ctrl-geocoder > div {
+  min-width: 100%;
+  margin-left: 0;
+}
+
+::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+  border-left: 0;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-track {
+  background: none;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #00853e;
+  border-radius: 0;
+}
+
+.clearfix {
+  display: block;
+}
+
+.clearfix::after {
+  content: '.';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+.arrow {
+  z-index: 20;
+  margin-top: 10px;
+  margin-left: 20px;
+  cursor : pointer;
+ 
+}
+
+.listings {
+  cursor: pointer;
+}
+

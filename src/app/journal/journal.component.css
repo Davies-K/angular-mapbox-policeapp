@@ -1,0 +1,99 @@
+.row-runs{
+ 
+  padding: 10px 32px;
+}
+
+td{
+  font-size:16px;
+}
+
+table>tbody>tr:hover{
+  background-color: #fff;
+}
+
+td > a{
+  color: #ff1744;
+}
+
+td > a:hover{
+  text-decoration: none;
+  color: #ff5252;
+}
+
+hr{
+  border-color: #ddd;
+}
+
+.summary{
+  font-size: 16px;
+}
+
+.heading{
+  font-family: 'Fjalla One', sans-serif;
+ 
+}
+
+.totals{
+  display: inline;
+  font-family: 'Fjalla One', sans-serif;
+  color:#333;
+  margin: 2px;
+}
+
+.backy {
+  
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size : cover;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background-image: url(http://rbrua3v80lj2rulsf7iqfnpmf.wpengine.netdna-cdn.com/wp-content/uploads/2015/11/6355422_G.jpg)
+ 
+  
+}
+
+
+
+.map_array {
+  z-index : 10;
+  width: 60%;
+  height: 620px;
+  border-radius : 20px;
+  background-color : white;
+  position : absolute;
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-top: 5%;
+  
+  /* box-shadow: -19px 10px 5px 0px rgba(0,0,0,0.28); */
+
+}
+
+
+.cop_img {
+  display : inline-block;
+  width: 63%;
+  background-image : url(https://images.caricos.com/f/ford/2016_ford_police_interceptor_utility/images/1024x768/2016_ford_police_interceptor_utility_39_1024x768.jpg);
+  background-size : contain;
+  height: 100%;
+  position: absolute;
+  
+  background-repeat: no-repeat;
+ 
+}
+
+.cop_hd {
+
+  display: inline-block;
+  width: 37%;
+  height: 100%;
+  background-size: contain;
+  background-image: url(https://fortunedotcom.files.wordpress.com/2016/02/rex.png);
+  border-radius: 0 15px 15px 0 ;
+ 
+  margin-top : 15px;
+  margin-left : -25px;
+  background-repeat: no-repeat;
+}
+

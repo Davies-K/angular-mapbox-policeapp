@@ -1,0 +1,573 @@
+#map {
+    z-index: -1;
+    
+    width: 100%;
+    height: 100vh;
+    position:absolute;
+     top:0; bottom:0; right: 0; left: 0;
+}
+
+.marker {
+  border: none;
+  cursor: pointer;
+  height: 20px;
+  width: 20px;
+  background-image: url(../../assets/police/car-police-front-02-512.png);
+  
+  background-color: rgba(0, 0, 0, 0);
+  background-size : contain;
+  background-repeat: no-repeat;
+  
+}
+
+
+.map_array {
+    z-index : 10;
+    width: 750px;
+    height: 320px;
+    border-radius : 20px;
+    background-color : white;
+    position : absolute;
+    margin-top : 32%;
+    margin-left : 100px;
+    box-shadow: -10px 20px 15px -10px rgba(21, 22, 21, 0.3);
+}
+
+
+.cop_img {
+    display : inline-block;
+    width: 63%;
+    background-image : url(https://images.caricos.com/f/ford/2016_ford_police_interceptor_utility/images/1024x768/2016_ford_police_interceptor_utility_39_1024x768.jpg);
+    background-size : contain;
+    height: 100%;
+    border-radius: 15px 0px 0px 15px;
+    background-repeat: no-repeat;
+   
+}
+
+.cop_hd {
+
+    display: inline-block;
+    width: 37%;
+    height: 100%;
+    background-size: contain;
+    background-image: url(https://fortunedotcom.files.wordpress.com/2016/02/rex.png);
+    border-radius: 0 15px 15px 0 ;
+    position : absolute;
+    margin-top : 15px;
+    margin-left : -25px;
+}
+
+
+/* #back_to_top{
+    background:transparent;
+    font-family: 'Montserrat';
+    font-weight:100;
+    align-content:center;
+    align-items:center;
+    color:white;
+    
+    
+    padding:10px;
+    
+  }
+  
+  #main_footer{
+    background:#fa782e;
+    font-family: 'Montserrat';
+    color:rgba(255,255,255,0.72);
+    font-size: 12px;
+  }
+  
+  #footer_container{
+    max-width:770px;
+  }
+  
+  #copyright_background{
+    background:#f35e3d;
+    color:white;
+    font-family: 'Montserrat';
+    padding:25px;
+    font-size: 10px;
+  }
+  
+  #font_title{
+    font-weight:500;
+    font-size:small;
+    color:white;
+    margin-top:20px;
+  }
+  
+  #follow_footer{
+    margin-top:-10px;
+  }
+
+
+.mat-fab{
+  background: #f35e3d;
+}
+  
+
+
+nav {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  height: 53px;
+  width: 420px;
+  box-sizing: border-box;
+  padding: 4px;
+  background: rgba(83, 112, 109, 0.623);
+  transform: translateX(-50%);
+  border-radius: 5px 5px 0 0;
+  list-style: none;
+  
+}
+
+
+
+
+
+nav hr {
+  display: inline-block;
+  width: 1px;
+  background: #696969;
+  height: 85%;
+  vertical-align: top;
+  margin-top: 3px;
+  border: none;
+  margin-left: 5px;
+  margin-right: 5px;
+  z-index: 40;
+  list-style: none;
+}
+
+nav .icon {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border: none;
+  transition: 0.5s;
+}
+
+nav img {
+  width: 40px;
+  height: 40px;
+  transition: 0.5s;
+}
+
+label {
+  position: absolute;
+  margin-top: -50px;
+  color: #050505;
+  font-family: Helvetica, calibri, sans-serif;
+  font-weight: 100;
+  font-size: 14px;
+  background: #F6F6F6;
+  padding: 5px 15px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  z-index: 100;
+  display: none;
+  list-style: none;
+}
+
+label::before,
+label::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: 15px;
+  height: 15px;
+  border-radius: 1px;
+  background: #F6F6F6;
+  z-index: -1;
+}
+
+label::before {
+  bottom: -5px;
+  transform: translateX(-50%) rotateZ(45deg);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+}
+
+label::after {
+  transform: translateX(-50%);
+  bottom: 0;
+  width: 40px;
+  height: 20px;
+}
+
+nav .icon:hover > label {
+  display: block;
+  opacity: 0.75;
+}
+
+nav .icon:focus {
+  outline: none;
+  -webkit-animation: translate-animation 2.5s linear;
+  -moz-animation: translate-animation 2.5s linear;
+  animation: translate-animation 2.5s linear;
+}
+
+nav .icon:focus .dot {
+  transform: translate(0, 0);
+  -webkit-animation: translate-animation-reverse 2.5s linear;
+  -moz-animation: translate-animation-reverse 2.5s linear;
+  animation: translate-animation-reverse 2.5s linear;
+}
+
+nav .icon:focus .dot::before {
+  content: "";
+  position: fixed;
+  border-radius: 50%;
+  width: 4px;
+  height: 4px;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: black;
+  list-style: none;
+}
+
+@keyframes translate-animation {
+  0% {
+    transform: translate(0, 0);
+  }
+  20% {
+    transform: translate(0, -15px);
+  }
+  40% {
+    transform: translate(0, 0);
+  }
+  60% {
+    transform: translate(0, -15px);
+  }
+  80% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes translate-animation-reverse {
+  0% {
+    transform: translate(0, 0);
+  }
+  20% {
+    transform: translate(0, 15px);
+  }
+  40% {
+    transform: translate(0, 0);
+  }
+  60% {
+    transform: translate(0, 15px);
+  }
+  80% {
+    transform: translate(0, 0);
+  }
+}
+
+@supports ((-webkit-backdrop-filter: blur(20px)) or (backdrop-filter: blur(20px))) {
+  nav {
+    background: none;
+    -webkit-backdrop-filter: saturate(50%) blur(20px) brightness(200%);
+    backdrop-filter: saturate(50%) blur(20px) brightness(200%)
+  }
+} */
+
+
+html {
+  font-family: "SF Pro Text", "SF Pro Icons", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 100;
+    font-size: 14px;
+}
+
+
+
+.container {
+  margin: 0 ;
+  padding: 0;
+  width: 100%;
+  height: auto;
+}
+
+/* Nav Menu */
+nav.header {
+  /* background-color: #323232; */
+  background: rgba(0,0,0,0.8);
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 45px;
+  text-align: center;
+  
+  position: fixed;
+  top: 0;
+}
+nav.header a {
+  color: inherit;
+  text-decoration: none;
+}
+nav.header a:hover {
+  opacity: 0.5;
+  transition: 0.2s;
+}
+nav.header ul {
+  padding: 0;
+  margin: 0;
+}
+nav.header ul li {
+  list-style: none;
+  display: inline-block;
+  padding: 10px 34px;
+  margin: 0 auto;
+  cursor: pointer;
+}
+nav.header ul li i {
+  font-family: -apple-system, BlinkMacSystemFont, 
+      "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", 
+      "Fira Sans", "Droid Sans", "Helvetica Neue", 
+      sans-serif;
+    text-decoration: none;
+    color: #fff;
+    font-weight: 100;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+
+
+
+
+.dot-wrapper {
+    position: absolute;
+    top: calc(50% );
+    left: calc(50% );
+    z-index: 2;
+  }
+
+
+  .fire_wrapper {
+    position: absolute;
+    top: calc(20%);
+    left: calc(70%);
+    z-index: 2;
+  }
+
+  .fire_wrapper .car {
+    height: 50px;
+    width: 50px;
+    background-image : url(../../assets/police/car-police-front-02-512.png);
+    background-size : contain ;
+    background-repeat: no-repeat;
+    animation : move_in_circle 90s infinite;
+    
+
+
+    
+  }
+
+  @keyframes move_in_circle {
+    from { transform: rotate(0deg) translateX(150px) rotate(0deg); }
+    to   { transform: rotate(120deg) translateX(320px) rotate(-90deg) ; }
+  }
+
+
+  /* .car1_wrapper {
+    position: absolute;
+    top: calc(25%);
+    left: calc(41%);
+    z-index: 2;
+  }
+
+  .car1_wrapper .car {
+    height: 60px;
+    width: 60px;
+    background-image : url(../../assets/police/car-police-front-02-512.png);
+    background-size : contain ;
+    background-repeat: no-repeat;
+    animation: moveTrain 45s infinite;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+    
+  }
+
+  @keyframes moveTrain {
+    0% {
+      transform: translate(-185px,-159px);
+  }
+  /* 33% {
+      transform: translate(VALUE, VALUE);
+  }
+  66% {
+      transform: translate(VALUE, VALUE);
+  } */
+  
+
+  .car_wrapper {
+    position: absolute;
+    top: calc(15%);
+    left: calc(63%);
+    z-index: 2;
+  }
+
+  .car_wrapper .car {
+    height: 50px;
+    width: 50px;
+    background-image : url(../../assets/police/car-police-front-02-512.png);
+    background-size : contain ;
+    background-repeat: no-repeat;
+    animation: move 70s infinite;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+    
+  }
+
+  @keyframes move {
+
+    
+
+    100% {
+      transform: translate(-250px,250px);
+      
+      
+    }
+  }
+  .car3_wrapper {
+    position: absolute;
+    top: calc(20%);
+    left: calc(20%);
+    z-index: 2,
+  }
+
+  .car3_wrapper .car {
+    
+    width: 50px;
+    animation: big_truck_move 7s infinite linear;
+    background-image: url('https://s16.postimg.io/6xyi2z5rl/image.png');
+    background-position: center center;
+    background-size: contain;
+    height: 50px;
+    background-repeat: no-repeat;
+  }
+
+  .secondCar {
+    animation: move_2 70s infinite;
+    background-image: url('https://s16.postimg.io/qoqq8ufht/image.png');
+  }
+
+  @keyframes big_truck_move {
+    0% {
+      left: 0px;
+      top: 0px;
+    }
+    45%{
+          transform: rotate(0);
+    }
+    50% {
+      transform: rotate(-20deg);
+      left: 200px;
+      top: 100px;
+      background-image: url('https://s16.postimg.io/6xyi2z5rl/image.png');
+    }
+    51% {
+      transform: rotate(0);
+      background-image: url('https://s16.postimg.io/qoqq8ufht/image.png');
+    }
+    100% {
+      left: 400px;
+      top: 0;
+      background-image: url('https://s16.postimg.io/qoqq8ufht/image.png');
+      transform: rotate(0);
+    }
+  }
+
+
+  .car2_wrapper {
+    position: absolute;
+    top: calc(45%);
+    left: calc(55%);
+    z-index: 2;
+  }
+
+  .car2_wrapper .car {
+    height: 50px;
+    width: 50px;
+    background-image : url(../../assets/police/car-police-front-02-512.png);
+    background-size : contain ;
+    background-repeat: no-repeat;
+    animation: rotate_forever 70s infinite;
+    animation-direction: normal;
+    animation-fill-mode: forwards ;
+    
+  }
+
+  @keyframes rotate_forever {
+
+    from {
+      transform : translateX(150px) rotate(0deg)
+    }
+
+    to {
+      transform: translateX(0px) rotate(20deg)
+    }
+    
+  }
+
+
+  
+ 
+  
+  .dot {
+    display: block;
+    width: 10px;
+    height: 10px;
+    background-color: #6BA7C5;
+    border-radius: 100%;
+  }
+  
+  .dot-bubble:after {
+    position: absolute;
+    content: "";
+    top: calc(50% - 40px);
+    left: calc(50% - 40px);
+    width: 80px;
+    height: 80px;
+    background-color: #6BA7C5;
+    border-radius: 100%;
+    opacity: .1;    
+  }
+  
+  .dot-bubble:before {
+    position: absolute;
+    top: calc(50% - 101px);
+    left: calc(50% - 101px);
+    content: '';
+    width: 200px;
+    height: 200px; 
+    border: 1px solid rgba(55, 131, 169, 1);
+    box-shadow: 0 5px 5px rgba(63,173, 229,0.1);
+    border-radius: 100%;
+    animation: bubble 3s ease-out infinite;
+    z-index: 10;
+  }
+  
+  @keyframes bubble{
+    0%{
+      transform: scale(0);
+    }
+    30%{
+      box-shadow: 0 8px 20px rgba(63,173, 229,0.2);
+    }
+    80%{
+      border-color: rgba(55, 131, 169, 0.7);
+      box-shadow: 0 10px 30px rgba(63,173, 229, 0.2);
+    }
+    100%{
+      border-color: rgba(55, 131, 169, 0);
+    }
+  }
+  
