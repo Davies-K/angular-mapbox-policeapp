@@ -24,3 +24,4 @@ Pull requests for new features, bug fixes, and suggestions are welcome!
 
 [MIT](https://github.com/wanzaiwanger/angular-mapbox-gl-geocoder/blob/master/LICENSE)
 "# angular-mapbox-policeapp" 
+"# angular-mapbox-policeapp" 
