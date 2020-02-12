@@ -6,7 +6,7 @@
 export const environment = {
   production: false,
   firebase : {
-    apiKey: "AIzaSyCJA9ThlrnXjWG_XcsdepzxGihjPmWN7sg",
+    apiKey: "Type in your api key here",
     authDomain: "police-patrol-513dc.firebaseapp.com",
     databaseURL: "https://police-patrol-513dc.firebaseio.com",
     projectId: "police-patrol-513dc",
@@ -16,6 +16,6 @@ export const environment = {
 
   mapbox: {
     accessToken:
-      'pk.eyJ1IjoibWF0dHpoZW5nMjUiLCJhIjoiY2o1Y3B3YzBrMGNsZDJ3bzg1ZDBjOGxvbiJ9.HjOovjGYk7y6ExHFt3Rv2w',
+      'type in your api key here',
   },
 };
