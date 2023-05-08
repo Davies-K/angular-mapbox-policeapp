@@ -27,7 +27,7 @@
     "@turf/turf": "^5.1.6",
     "core-js": "^2.5.3",
     "firebase": "^5.8.1",
-    "jquery": "^3.3.1",
+    "jquery": "^3.5.0",
     "leaflet": "^1.4.0",
     "leaflet-omnivore": "^0.3.4",
     "mapbox-gl": "^0.40.1",
